@@ -16,6 +16,13 @@ class AdminController extends Controller
     public function login(Request $request) {
         if($request->isMethod('post')){
             $data = $request->all();
+
+            $request->validate([
+                'email' => 'required|email:rfc,dns',
+                'password' => 'required',
+            ]);
+
+            //$this->validatae($request,$rules,$customsMessages);
             if(Auth::guard('admin')->attempt([
                 'email'=>$data['email'],
                 'password'=>$data['password'],
