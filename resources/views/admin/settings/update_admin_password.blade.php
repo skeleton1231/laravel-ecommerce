@@ -33,7 +33,24 @@
                 <h4 class="card-title">Update Admin Password</h4>
                 <p class="card-description">
                 </p>
-                <form class="forms-sample">
+                @if(Session::has('error_message'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  <strong>Error: </strong> {{Session::get('error_message')}}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                @endif
+                @if(Session::has('success_message'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <strong>Success: </strong> {{Session::get('success_message')}}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                @endif
+                <form class="forms-sample" action="{{url('/admin/update-admin-password')}}" method="post"
+                name="udpateAdminPasswordForm" id="udpateAdminPasswordForm">@csrf
                   <div class="form-group">
                     <label>Admin Email</label>
                     <input type="text" class="form-control" value="{{$adminDetails['email']}}" readonly="">
@@ -54,12 +71,6 @@
                   <div class="form-group">
                     <label for="confirm_password">Confirm Password</label>
                     <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="Enter Confirm Password">
-                  </div>
-                  <div class="form-check form-check-flat form-check-primary">
-                    <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input">
-                      Remember me
-                    </label>
                   </div>
                   <button type="submit" class="btn btn-primary mr-2">Submit</button>
                   <button class="btn btn-light">Cancel</button>
