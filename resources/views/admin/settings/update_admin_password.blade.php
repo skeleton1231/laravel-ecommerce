@@ -43,8 +43,8 @@
                     <input type="text" class="form-control" value="{{$adminDetails['type']}}" readonly="">
                   </div>
                   <div class="form-group">
-                    <label for="current_passowrd">Current Password</label>
-                    <input type="password" class="form-control" name="current_passowrd" id="current_passowrd" placeholder="Enter Current Password">
+                    <label for="current_password">Current Password</label>
+                    <input type="password" class="form-control" name="current_password" id="current_password" placeholder="Enter Current Password">
                   </div>
                   <div class="form-group">
                     <label for="new_password">New Password</label>
