@@ -59,7 +59,7 @@
                 </div>
                 @endif
                 <form class="forms-sample" action="{{url('/admin/update-admin-details')}}" method="post"
-                name="udpateAdminDetailsForm" id="udpateAdminDetailsForm">@csrf
+                name="udpateAdminDetailsForm" id="udpateAdminDetailsForm" enctype="multipart/form-data">@csrf
                   <div class="form-group">
                     <label>Admin Email</label>
                     <input type="text" value="{{Auth::guard('admin')->user()->email}}" class="form-control"  readonly="">
@@ -78,6 +78,14 @@
                     <label for="admin_mobile">Mobile</label>
                     <input type="text" value="{{Auth::guard('admin')->user()->mobile}}" class="form-control"
                     name="admin_mobile" id="admin_mobile" placeholder="Enter the 10-15 mobile phone numbers" minlength="10" maxlength="13">
+                  </div>
+                  <div class="form-group">
+                    <label for="admin_image">Admin Avatar</label>
+                    <input type="file" class="form-control" name="admin_image" id="admin_image" placeholder="Upload Admin Avatar">
+                    @if(!empty(Auth::guard('admin')->user()->image))
+                    <a target="_blank" href="{{url('admin/images/photos/'.Auth::guard('admin')->user()->image)}}">View Image</a>
+                    @endif
+                    <input type="hidden" name="current_admin_image" value="{{Auth::guard('admin')->user()->image}}"></div>
                   </div>
                   <button type="submit" class="btn btn-primary mr-2">Submit</button>
                   <button class="btn btn-light">Cancel</button>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
+use Image;
 class AdminController extends Controller
 {
     //
@@ -86,8 +87,26 @@ class AdminController extends Controller
                 'admin_mobile.regex' => 'Valid Mobile is required',
             ];
             $this->validate($request,$rules,$customMessage);
+
+            // Upload Admin Avatar
+            if($request->hasFile('admin_image')){
+                $imgTmp = $request->file('admin_image');
+                if($imgTmp->isValid()){
+
+                    $ext = $imgTmp->getClientOriginalExtension();
+                    $imgName = md5(rand(1111, 9999)) . '.' . $ext;
+                    $imgPath = 'admin/images/photos/' . $imgName;
+                    //Image::make($imgTmp)->save($imgPath);
+                    Image::make($imgTmp)->save($imgPath);
+                }
+            } else if (!empty($data['current_admin_image'])){
+                $imgName = $data['current_admin_image'];
+            } else {
+                $imgName = "";
+            }
+
             Admin::where('id',Auth::guard('admin')->user()->id)->update(
-                ['name'=>$data['admin_name'],'mobile'=>$data['admin_mobile']]
+                ['name'=>$data['admin_name'],'mobile'=>$data['admin_mobile'],'image'=>$imgName]
             );
             return redirect()->back()->with('success_message',"Admin Details Update Successfully");
         }
