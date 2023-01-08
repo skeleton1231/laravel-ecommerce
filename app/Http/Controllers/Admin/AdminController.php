@@ -80,10 +80,10 @@ class AdminController extends Controller
                 'admin_mobile'=>'required|numeric',
             ];
             $customMessage = [
-                'admin.name.required' => 'Name is required',
-                'admin.name.regex' => 'Valid Name is required',
-                'admin.mobile.required' => 'Mobile is required',
-                'admin.mobile.regex' => 'Valid Mobile is required',
+                'admin_name.required' => 'Name is required',
+                'admin_name.regex' => 'Valid Name is required',
+                'admin_mobile.required' => 'Mobile is required',
+                'admin_mobile.regex' => 'Valid Mobile is required',
             ];
             $this->validate($request,$rules,$customMessage);
             Admin::where('id',Auth::guard('admin')->user()->id)->update(
