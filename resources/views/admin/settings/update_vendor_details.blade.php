@@ -59,7 +59,7 @@
                     </ul>
                 </div>
                 @endif
-                <form class="forms-sample" action="{{url('/admin/update-vendor-details')}}" method="post"
+                <form class="forms-sample" action="{{url('/admin/update-vendor-details/')}}/{{$slug}}" method="post"
                 name="udpatevendorDetailsForm" id="udpatevendorDetailsForm" enctype="multipart/form-data">@csrf
                   <div class="form-group">
                     <label>Vendor Email</label>
@@ -77,32 +77,32 @@
                  </div>
                  <div class="form-group">
                     <label for="vendor_address">Vendor Address</label>
-                    <input type="text" value="{{Auth::guard('admin')->user()->address}}" class="form-control"
+                    <input type="text" value="{{$vendorDetails['address']}}" class="form-control"
                     name="vendor_address" id="vendor_address" placeholder="">
                  </div>
                  <div class="form-group">
                     <label for="vendor_city">Vendor City</label>
-                    <input type="text" value="{{Auth::guard('admin')->user()->city}}" class="form-control"
+                    <input type="text" value="{{$vendorDetails['city']}}" class="form-control"
                     name="vendor_city" id="vendor_city" placeholder="">
                  </div>
                  <div class="form-group">
                     <label for="vendor_state">Vendor State</label>
-                    <input type="text" value="{{Auth::guard('admin')->user()->state}}" class="form-control"
+                    <input type="text" value="{{$vendorDetails['state']}}" class="form-control"
                     name="vendor_state" id="vendor_state" placeholder="">
                  </div>
                  <div class="form-group">
                     <label for="vendor_country">Vendor Country</label>
-                    <input type="text" value="{{Auth::guard('admin')->user()->country}}" class="form-control"
+                    <input type="text" value="{{$vendorDetails['country']}}" class="form-control"
                     name="vendor_country" id="vendor_country" placeholder="">
                  </div>
                  <div class="form-group">
                     <label for="vendor_pincode">Vendor Pincode</label>
-                    <input type="text" value="{{Auth::guard('admin')->user()->pincode}}" class="form-control"
+                    <input type="text" value="{{$vendorDetails['pincode']}}" class="form-control"
                     name="vendor_pincode" id="vendor_pincode" placeholder="">
                  </div>
                   <div class="form-group">
                     <label for="vendor_mobile">Vendor Mobile</label>
-                    <input type="text" value="{{Auth::guard('admin')->user()->mobile}}" class="form-control"
+                    <input type="text" value="{{$vendorDetails['mobile']}}" class="form-control"
                     name="vendor_mobile" id="vendor_mobile" placeholder="Enter the 10-15 mobile phone numbers" minlength="10" maxlength="13">
                   </div>
                   <div class="form-group">
