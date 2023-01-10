@@ -112,4 +112,15 @@ class AdminController extends Controller
         }
         return view('admin.settings.update_admin_details');
     }
+
+    public function updateVendorDetails($slug){
+       if($slug == 'personal'){
+
+       } else if ($slug == 'business'){
+
+       } else if ($slug == 'bank') {
+
+       }
+        return view('admin.settings.update_vendor_details')->with(compact('slug'));
+    }
 }
