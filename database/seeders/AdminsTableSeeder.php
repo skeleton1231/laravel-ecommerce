@@ -17,15 +17,17 @@ class AdminsTableSeeder extends Seeder
     {
         //
         $adminRecords = [
-            'id'=>1,
-            'name'=>'Super Admin',
-            'type'=>'superadmin',
-            'vendor_id'=>0,
-            'mobile'=>'8615999593293',
-            'email'=>'admin@laravel.com',
-            'password'=>'$2y$10$4.aZgRUiTKMPdH2VffueqetmOaXqVIBvygLpYUmyLYJ8vc.7/KzFu',
-            'image'=>'',
-            'status'=>1,
+            [
+                'id'=>2,
+                'name'=>'Jhon',
+                'type'=>'vendor',
+                'vendor_id'=>1,
+                'mobile'=>'15999123456',
+                'email'=>'jhon@laravel.com',
+                'password'=>'$2y$10$4.aZgRUiTKMPdH2VffueqetmOaXqVIBvygLpYUmyLYJ8vc.7/KzFu',
+                'image'=>'',
+                'status'=>0,
+            ],
         ];
         Admin::insert($adminRecords);
     }
