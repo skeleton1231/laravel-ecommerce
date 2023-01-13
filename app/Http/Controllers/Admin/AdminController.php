@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\VendersBusinessDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Admin;
 use App\Models\Vendor;
+use App\Models\VendorsBusinessDetail;
+
 use Illuminate\Support\Facades\Hash;
 use Image;
 class AdminController extends Controller
@@ -166,7 +167,7 @@ class AdminController extends Controller
             }
             $vendorDetails = Vendor::where('id',Auth::guard('admin')->user()->vendor_id)->first()->toArray();
        } else if ($slug == 'business') {
-            $vendorDetails = VendersBusinessDetail::where('vendor_id',Auth::guard('admin')->user()->vendor_id)->first()->toArray();
+            $vendorDetails = VendorsBusinessDetail::where('vendor_id',Auth::guard('admin')->user()->vendor_id)->first()->toArray();
 
 
        } else if ($slug == 'bank') {

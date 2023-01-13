@@ -170,33 +170,43 @@
                  </div>
                  <div class="form-group">
                     <label for="shop_address">Shop Address</label>
-                    <input type="text" value="{{$vendorDetails['address']}}" class="form-control"
+                    <input type="text" value="{{$vendorDetails['shop_address']}}" class="form-control"
                     name="shop_address" id="shop_address" placeholder="">
                  </div>
                  <div class="form-group">
                     <label for="vendor_city">Shop City</label>
-                    <input type="text" value="{{$vendorDetails['city']}}" class="form-control"
+                    <input type="text" value="{{$vendorDetails['shop_city']}}" class="form-control"
                     name="shop_city" id="shop_city" placeholder="">
                  </div>
                  <div class="form-group">
                     <label for="vendor_state">Shop State</label>
-                    <input type="text" value="{{$vendorDetails['state']}}" class="form-control"
+                    <input type="text" value="{{$vendorDetails['shop_state']}}" class="form-control"
                     name="shop_state" id="shop_state" placeholder="">
                  </div>
                  <div class="form-group">
                     <label for="vendor_country">Shop Country</label>
-                    <input type="text" value="{{$vendorDetails['country']}}" class="form-control"
+                    <input type="text" value="{{$vendorDetails['shop_country']}}" class="form-control"
                     name="shop_country" id="shop_country" placeholder="">
                  </div>
                  <div class="form-group">
-                    <label for="vendor_pincode">Shop Pincode</label>
-                    <input type="text" value="{{$vendorDetails['pincode']}}" class="form-control"
+                    <label for="shop_pincode">Shop Pincode</label>
+                    <input type="text" value="{{$vendorDetails['shop_pincode']}}" class="form-control"
                     name="shop_pincode" id="shop_pincode" placeholder="">
                  </div>
                   <div class="form-group">
-                    <label for="vendor_mobile">Shop Mobile</label>
-                    <input type="text" value="{{$vendorDetails['mobile']}}" class="form-control"
+                    <label for="shop_mobile">Shop Mobile</label>
+                    <input type="text" value="{{$vendorDetails['shop_mobile']}}" class="form-control"
                     name="shop_mobile" id="shop_mobile" placeholder="Enter the 10-15 mobile phone numbers" minlength="10" maxlength="13">
+                  </div>
+                  <div class="form-group">
+                    <label for="shop_website">Shop Website</label>
+                    <input type="text" value="{{$vendorDetails['shop_website']}}" class="form-control"
+                    name="shop_website" id="shop_website" placeholder="">
+                  </div>
+                  <div class="form-group">
+                    <label for="shop_email">Shop Email</label>
+                    <input type="text" value="{{$vendorDetails['shop_email']}}" class="form-control"
+                    name="shop_email" id="shop_email" placeholder="">
                   </div>
                   <div class="form-group">
                     <label for="vendor_country">Business License Number</label>
@@ -215,19 +225,19 @@
               </div>
                   <div class="form-group">
                     <label for="address_proof">Shop Address Proof</label>
-                    <select class="form-control" name="address_proof" id="address_proof"></select>
-                    <option value="Passport">Passport</option>
-                    <option value="Voting Card">Voting Card</option>
-                    <option value="PAN">PAN</option>
-                    <option value="Driving License">Driving License</option>
-                    <option value="Identity Card">Identity Card</option>
-
+                    <select class="form-control" name="address_proof" id="address_proof">
+                        <option value="Passport">Passport</option>
+                        <option value="Voting Card">Voting Card</option>
+                        <option value="PAN">PAN</option>
+                        <option value="Driving License">Driving License</option>
+                        <option value="Identity Card">Identity Card</option>
+                    </select>
                   </div>
                   <div class="form-group">
                     <label for="vendor_image">Shop Address Proof Image</label>
                     <input type="file" class="form-control" name="address_proof_image" id="address_proof_image" placeholder="Upload Address Proof Image">
                     @if(!empty($vendorDetails['address_proof_image']))
-                    <a target="_blank" href="{{url('admin/images/photos/').$vendorDetails['address_proof_image']}}">View Image</a>
+                    <a target="_blank" href="{{url('admin/images/proofs').'/'.$vendorDetails['address_proof_image']}}">View Image</a>
                     @endif
                     <input type="hidden" name="current_vendor_image" value="{{$vendorDetails['address_proof_image']}}"></div>
                   </div>
