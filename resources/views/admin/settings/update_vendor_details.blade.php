@@ -165,7 +165,7 @@
                   </div>
                   <div class="form-group">
                     <label for="shop_name">Shop Name</label>
-                    <input type="text" value="{{Auth::guard('admin')->user()->name}}" class="form-control"
+                    <input type="text" value="{{$vendorDetails['shop_name']}}" class="form-control"
                     name="shop_name" id="shop_name" placeholder="">
                  </div>
                  <div class="form-group">
@@ -174,7 +174,7 @@
                     name="shop_address" id="shop_address" placeholder="">
                  </div>
                  <div class="form-group">
-                    <label for="vendor_city">Shop City</label>
+                    <label for="shop_city">Shop City</label>
                     <input type="text" value="{{$vendorDetails['shop_city']}}" class="form-control"
                     name="shop_city" id="shop_city" placeholder="">
                  </div>
@@ -226,11 +226,11 @@
                   <div class="form-group">
                     <label for="address_proof">Shop Address Proof</label>
                     <select class="form-control" name="address_proof" id="address_proof">
-                        <option value="Passport">Passport</option>
-                        <option value="Voting Card">Voting Card</option>
-                        <option value="PAN">PAN</option>
-                        <option value="Driving License">Driving License</option>
-                        <option value="Identity Card">Identity Card</option>
+                        <option value="Passport" @if($vendorDetails['address_proof'] == "Passport") selected @endif>Passport</option>
+                        <option value="Voting Card" @if($vendorDetails['address_proof'] == "Voting Card") selected @endif>Voting Card</option>
+                        <option value="PAN" @if($vendorDetails['address_proof'] == "PAN") selected @endif>PAN</option>
+                        <option value="Driving License" @if($vendorDetails['address_proof'] == "Driving License") selected @endif>Driving License</option>
+                        <option value="Identity Card" @if($vendorDetails['address_proof'] == "Identity Card") selected @endif>Identity Card</option>
                     </select>
                   </div>
                   <div class="form-group">
@@ -239,7 +239,7 @@
                     @if(!empty($vendorDetails['address_proof_image']))
                     <a target="_blank" href="{{url('admin/images/proofs').'/'.$vendorDetails['address_proof_image']}}">View Image</a>
                     @endif
-                    <input type="hidden" name="current_vendor_image" value="{{$vendorDetails['address_proof_image']}}"></div>
+                    <input type="hidden" name="current_address_proof_image" value="{{$vendorDetails['address_proof_image']}}"></div>
                   </div>
                   <button type="submit" class="btn btn-primary mr-2">Submit</button>
                   <button class="btn btn-light">Cancel</button>
