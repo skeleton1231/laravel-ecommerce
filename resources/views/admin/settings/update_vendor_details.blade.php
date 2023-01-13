@@ -249,6 +249,75 @@
           </div>
       </div>
       @elseif ($slug=='bank')
+      <div class="row">
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Update Bank Details</h4>
+                <p class="card-description">
+                </p>
+                @if(Session::has('error_message'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  <strong>Error: </strong> {{Session::get('error_message')}}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                @endif
+                @if(Session::has('success_message'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <strong>Success: </strong> {{Session::get('success_message')}}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                @endif
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                    </ul>
+                </div>
+                @endif
+                <form class="forms-sample" action="{{url('/admin/update-vendor-details/')}}/{{$slug}}" method="post"
+                name="udpatevendorDetailsForm" id="udpatevendorDetailsForm" enctype="multipart/form-data">@csrf
+                  <div class="form-group">
+                    <label>Vendor Email</label>
+                    <input type="text" value="{{Auth::guard('admin')->user()->email}}" class="form-control"  readonly="">
+                  </div>
+                  <div class="form-group">
+                    <label>Vendor Type</label>
+                    <input type="text" value="{{Auth::guard('admin')->user()->type}}" class="form-control" readonly="">
+                  </div>
+                  <div class="form-group">
+                    <label for="account_holder_name">Account Holder Name</label>
+                    <input type="text" value="{{$vendorDetails['account_holder_name']}}" class="form-control"
+                    name="account_holder_name" id="account_holder_name" placeholder="">
+                 </div>
+                 <div class="form-group">
+                    <label for="bank_name">Bank Name</label>
+                    <input type="text" value="{{$vendorDetails['bank_name']}}" class="form-control"
+                    name="bank_name" id="bank_name" placeholder="">
+                 </div>
+                 <div class="form-group">
+                    <label for="account_number">Account Number</label>
+                    <input type="text" value="{{$vendorDetails['account_number']}}" class="form-control"
+                    name="account_number" id="account_number" placeholder="">
+                 </div>
+                 <div class="form-group">
+                    <label for="bank_ifsc_code">Bank Ifsc Code</label>
+                    <input type="text" value="{{$vendorDetails['bank_ifsc_code']}}" class="form-control"
+                    name="bank_ifsc_code" id="bank_ifsc_code" placeholder="">
+                 </div>
+                  <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                  <button class="btn btn-light">Cancel</button>
+                </form>
+              </div>
+            </div>
+          </div>
+      </div>
       @endif
         <!-- content-wrapper ends -->
     <!-- partial:partials/_footer.html -->
