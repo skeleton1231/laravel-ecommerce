@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\VendersBusinessDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Admin;
@@ -164,7 +165,9 @@ class AdminController extends Controller
                 return redirect()->back()->with('success_message',"Admin Details Update Successfully");
             }
             $vendorDetails = Vendor::where('id',Auth::guard('admin')->user()->vendor_id)->first()->toArray();
-       } else if ($slug == 'business'){
+       } else if ($slug == 'business') {
+            $vendorDetails = VendersBusinessDetail::where('vendor_id',Auth::guard('admin')->user()->vendor_id)->first()->toArray();
+
 
        } else if ($slug == 'bank') {
 
