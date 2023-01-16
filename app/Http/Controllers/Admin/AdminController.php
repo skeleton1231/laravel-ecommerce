@@ -277,9 +277,12 @@ class AdminController extends Controller
         $admins = Admin::query();
         if(!empty($type)) {
             $admins->where('type', $type);
+            $title = ucfirst($type);
+        } else {
+            $title = "All Admins|Subadmins|Vendors";
         }
         $admins = $admins->get()->toArray();
 
-        return view('admin.admins.admins')->with(compact('admins'));
+        return view('admin.admins.admins')->with(compact('admins','title'));
     }
 }
