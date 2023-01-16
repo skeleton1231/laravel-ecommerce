@@ -44,5 +44,8 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
 
         // admin/admins/{$slug}
         Route::get('admins/{type?}', 'AdminController@admins');
+
+        //
+        Route::get('view-vendor-details/{id}', 'AdminController@viewVendorDetails');
     });
 });
