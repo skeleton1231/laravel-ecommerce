@@ -41,5 +41,8 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
 
         // Vendor
         Route::match (['get', 'post'],'update-vendor-details/{slug}','AdminController@updateVendorDetails');
+
+        // admin/admins/{$slug}
+        Route::get('admins/{type?}', 'AdminController@admins');
     });
 });
