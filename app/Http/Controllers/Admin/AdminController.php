@@ -12,11 +12,13 @@ use App\Models\VendorsBusinessDetail;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Image;
 class AdminController extends Controller
 {
     //
     public function dashboard() {
+        Session::put('page', 'dashboard');
         return view('admin.dashboard');
     }
 
@@ -49,6 +51,7 @@ class AdminController extends Controller
     }
 
     public function updateAdminPassword(Request $request){
+        Session::put('page','update_admin_password');
         if($request->isMethod('post')){
             $data = $request->all();
             if(Hash::check($data['current_password'],Auth::guard('admin')->user()->password)){
@@ -79,6 +82,8 @@ class AdminController extends Controller
     }
 
     public function updateAdminDetails(Request $request) {
+        Session::put('page','update_admin_details');
+
         if ($request->isMethod('post')) {
             $data = $request->all();
             $rules = [
@@ -119,6 +124,7 @@ class AdminController extends Controller
     }
 
     public function updateVendorDetails($slug,Request $request){
+        Session::put('page', 'update_'.$slug.'_details');
        if($slug == 'personal'){
             if($request->isMethod('post')){
                 $data = $request->all();
@@ -276,11 +282,19 @@ class AdminController extends Controller
 
     public function admins($type=null){
         $admins = Admin::query();
-        if(!empty($type)) {
-            $admins->where('type', $type);
-            $title = ucfirst($type);
+        $reflect = [
+            'vendors'=>'vendor',
+            'subadmins'=>'subadmin',
+            'admins'=>'admin',
+        ];
+
+        if(isset($reflect[$type])) {
+            $admins->where('type', $reflect[$type]);
+            $title = ucfirst($reflect[$type]);
+            Session::put('page', 'view_'. strtolower($type));
         } else {
             $title = "All Admins|Subadmins|Vendors";
+            Session::put('page', 'view_all');
         }
         $admins = $admins->get()->toArray();
 
