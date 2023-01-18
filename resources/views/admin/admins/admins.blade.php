@@ -64,9 +64,17 @@
                           </td>
                           <td>
                             @if($admin['status'] == 1)
-                                <i style="font-size:25px" class="mdi mdi-bookmark-check"></i>
+                                <a class="updateAdminStatus"
+                                id="admin-{{$admin['id']}}"
+                                admin_id="{{$admin['id']}}" href="javascript:void(0)">
+                                    <i style="font-size:25px" class="mdi mdi-bookmark-check" status="Active"></i>
+                                </a>
                             @else
-                                <i style="font-size:25px" class="mdi mdi-bookmark-outline"></i>
+                                <a class="updateAdminStatus"
+                                id="admin-{{$admin['id']}}"
+                                admin_id="{{$admin['id']}}" href="javascript:void(0)">
+                                <i style="font-size:25px" class="mdi mdi-bookmark-outline" status="Inactive"></i>
+                                </a>
                             @endif
                           </td>
                           <td>

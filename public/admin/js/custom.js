@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    //Check Admin Password
+    // Check Admin Password
     $('#current_password').keyup(function(){
         var current_password = $("#current_password").val();
         console.log(current_password);
@@ -23,5 +23,25 @@ $(document).ready(function(){
                 console.log(err)
             }
         });
+    })
+
+    // Update Admin Status
+    $(document).on("click",".updateAdminStatus",function(){
+        var status = $(this).children("i").attr("status")
+        console.log(status)
+        var admin_id = $(this).attr("admin_id")
+        console.log(admin_id)
+        $.ajax({
+            type:"post",
+            url:"/admin/update-admin-status",
+            data:{status:status,admin_id:admin_id},
+            success:function(resp){
+
+            },
+            error:function(err){
+                console.log(err)
+            }
+        })
+
     })
 });
