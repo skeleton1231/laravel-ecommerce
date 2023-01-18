@@ -10,6 +10,7 @@ use App\Models\Vendor;
 use App\Models\VendorsBankDetails;
 use App\Models\VendorsBusinessDetail;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Image;
 class AdminController extends Controller
@@ -291,5 +292,20 @@ class AdminController extends Controller
         $vendorDetails = json_decode(json_encode($vendorDetails),true);
         //dd($vendorDetails);
         return view('admin.admins.view_vendor_details')->with(compact('vendorDetails'));
+    }
+
+    public function updateAdminStatus(Request $request) {
+        if($request->ajax()){
+            $data = $request->all();
+            if ($data['status'] == 'Active') {
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+            DB::enableQueryLog();
+            $res=Admin::where('id', $data['admin_id'])->update(['status'=>$status]);
+            DB::getQueryLog();
+            return response()->json(['status'=>$status,'admin_id'=>$data['admin_id'],'res'=>$res]);
+        }
     }
 }
