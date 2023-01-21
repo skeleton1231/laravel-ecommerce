@@ -92,8 +92,20 @@
                  </div>
                  <div class="form-group">
                     <label for="vendor_country">Vendor Country</label>
-                    <input type="text" value="{{$vendorDetails['country']}}" class="form-control"
-                    name="vendor_country" id="vendor_country" placeholder="">
+                    {{-- <input type="text" value="{{$vendorDetails['country']}}" class="form-control"
+                    name="vendor_country" id="vendor_country" placeholder=""> --}}
+                    <select class="form-control" id="vendor_country" name="vendor_country">
+                        <option value="">Select Country</option>
+                        @foreach ( $countries as $country)
+                            <option value="{{$country['country_name']}}"
+                            @if ($country['country_name'] == $vendorDetails['country'])
+                            selected
+                            @endif
+                            >
+                                {{$country['country_name']}}
+                            </option>
+                        @endforeach
+                    </select>
                  </div>
                  <div class="form-group">
                     <label for="vendor_pincode">Vendor Pincode</label>

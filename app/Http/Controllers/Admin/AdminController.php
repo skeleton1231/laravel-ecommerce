@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Country;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Admin;
@@ -124,7 +125,7 @@ class AdminController extends Controller
     }
 
     public function updateVendorDetails($slug,Request $request){
-        Session::put('page', 'update_'.$slug.'_details');
+       Session::put('page', 'update_'.$slug.'_details');
        if($slug == 'personal'){
             if($request->isMethod('post')){
                 $data = $request->all();
@@ -277,7 +278,8 @@ class AdminController extends Controller
 
 
        }
-        return view('admin.settings.update_vendor_details')->with(compact('slug','vendorDetails'));
+        $countries = Country::where('status',1)->get()->toArray();
+        return view('admin.settings.update_vendor_details')->with(compact('slug','vendorDetails','countries'));
     }
 
     public function admins($type=null){
