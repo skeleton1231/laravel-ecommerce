@@ -25,6 +25,9 @@ namespace App\Models{
  * @property int $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\VendorsBankDetails|null $vendorBank
+ * @property-read \App\Models\VendorsBusinessDetail|null $vendorBusiness
+ * @property-read \App\Models\Vendor|null $vendorPersonal
  * @method static \Illuminate\Database\Eloquent\Builder|Admin newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Admin newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Admin query()
@@ -41,6 +44,29 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Admin whereVendorId($value)
  */
 	class Admin extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Country
+ *
+ * @property int $id
+ * @property string $country_code
+ * @property string $country_name
+ * @property int $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Country newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Country newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Country query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereCountryCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereCountryName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereUpdatedAt($value)
+ */
+	class Country extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -77,17 +103,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\VendersBusinessDetail
- *
- * @method static \Illuminate\Database\Eloquent\Builder|VendersBusinessDetail newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|VendersBusinessDetail newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|VendersBusinessDetail query()
- */
-	class VendersBusinessDetail extends \Eloquent {}
-}
-
-namespace App\Models{
-/**
  * App\Models\Vendor
  *
  * @property int $id
@@ -119,5 +134,79 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Vendor whereUpdatedAt($value)
  */
 	class Vendor extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\VendorsBankDetails
+ *
+ * @property int $id
+ * @property int $vendor_id
+ * @property string $account_holder_name
+ * @property string $bank_name
+ * @property string $account_number
+ * @property string $bank_ifsc_code
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBankDetails newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBankDetails newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBankDetails query()
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBankDetails whereAccountHolderName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBankDetails whereAccountNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBankDetails whereBankIfscCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBankDetails whereBankName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBankDetails whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBankDetails whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBankDetails whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBankDetails whereVendorId($value)
+ */
+	class VendorsBankDetails extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\VendorsBusinessDetail
+ *
+ * @property int $id
+ * @property int $vendor_id
+ * @property string $shop_name
+ * @property string $shop_address
+ * @property string $shop_city
+ * @property string $shop_state
+ * @property string $shop_country
+ * @property string $shop_pincode
+ * @property string $shop_mobile
+ * @property string $shop_website
+ * @property string $shop_email
+ * @property string $address_proof
+ * @property string $address_proof_image
+ * @property string $business_license_number
+ * @property string $gst_number
+ * @property string $pan_number
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBusinessDetail newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBusinessDetail newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBusinessDetail query()
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBusinessDetail whereAddressProof($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBusinessDetail whereAddressProofImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBusinessDetail whereBusinessLicenseNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBusinessDetail whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBusinessDetail whereGstNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBusinessDetail whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBusinessDetail wherePanNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBusinessDetail whereShopAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBusinessDetail whereShopCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBusinessDetail whereShopCountry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBusinessDetail whereShopEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBusinessDetail whereShopMobile($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBusinessDetail whereShopName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBusinessDetail whereShopPincode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBusinessDetail whereShopState($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBusinessDetail whereShopWebsite($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBusinessDetail whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|VendorsBusinessDetail whereVendorId($value)
+ */
+	class VendorsBusinessDetail extends \Eloquent {}
 }
 
