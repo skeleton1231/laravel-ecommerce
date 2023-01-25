@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\SectionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,5 +51,8 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
 
         // Update Admin Status
         Route::post('update-admin-status', 'AdminController@updateAdminStatus');
+
+        //
+        Route::get('sections', 'SectionController@sections');
     });
 });
