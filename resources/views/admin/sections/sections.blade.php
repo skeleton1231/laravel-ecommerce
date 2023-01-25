@@ -8,11 +8,8 @@
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">Sections</h4>
-              <p class="card-description">
-                Add class <code>.table-bordered</code>
-              </p>
               <div class="table-responsive pt-3">
-                <table class="table table-bordered">
+                <table id="sections" class="table table-bordered">
                   <thead>
                     <tr>
                       <th>
@@ -54,7 +51,12 @@
                             @endif
                           </td>
                           <td>
-                                <a href=" {{ url('section/view-section-details/' . $section['id']) }} "><i style="font-size:25px" class="mdi mdi-file-document"></i></a>
+                                <a href=" {{ url('admin/add-edit-section/' . $section['id']) }} ">
+                                    <i style="font-size:25px" class="mdi mdi-pencil-box"></i>
+                                </a>
+                                <a href=" {{ url('admin/delete-section/' . $section['id']) }} ">
+                                    <i style="font-size:25px" class="mdi mdi-file-excel-box"></i>
+                                </a>
                           </td>
                       </tr>
                     @endforeach

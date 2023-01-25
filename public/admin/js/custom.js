@@ -1,4 +1,11 @@
 $(document).ready(function(){
+
+    // datatable
+    $(document).ready(function () {
+        $('#sections').DataTable();
+    });
+
+
     $(".nav-item").removeClass("active");
     $(".nav-link").removeClass("active");
     // Check Admin Password
@@ -53,4 +60,29 @@ $(document).ready(function(){
         })
 
     })
+
+        // Update Admin Status
+        $(document).on("click",".updateSectionStatus",function(){
+            var status = $(this).children("i").attr("status")
+            var section_id = $(this).attr("section_id")
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type:"post",
+                url:"/admin/update-section-status",
+                data:{status:status,section_id:section_id},
+                success:function(resp){
+                    if(resp['status'] == 0){
+                        $('#section-'+section_id).html("<i style='font-size:25px' class='mdi mdi-bookmark-outline' status='Inactive'></i>");
+                    } else {
+                        $('#section-'+section_id).html("<i style='font-size:25px' class='mdi mdi-bookmark-check' status='Active' ></i>")
+                    }
+                },
+                error:function(err){
+                    console.log(err)
+                }
+            })
+
+        })
 });
