@@ -71,6 +71,27 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Section
+ *
+ * @property int $id
+ * @property string $name
+ * @property int $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Section newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Section newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Section query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Section whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Section whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Section whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Section whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Section whereUpdatedAt($value)
+ */
+	class Section extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\User
  *
  * @property int $id
